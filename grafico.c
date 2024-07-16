@@ -3,8 +3,8 @@
 #include <unistd.h>
 #include <string.h>
 
-void criarGraficoDePontos(double *valores, unsigned tamanho, const char *nomeGrafico, const char *nomeEixoX, const char *nomeEixoY) {
-    if (valores == NULL) {
+void criarGraficoDePontos(double *valoresX, double *valoresY, unsigned tamanho, const char *nomeGrafico, const char *nomeEixoX, const char *nomeEixoY) {
+    if (tamanho == 0) {
         printf("\n--- Dados nulos obtidos ---\n");
         return;
     }
@@ -14,18 +14,14 @@ void criarGraficoDePontos(double *valores, unsigned tamanho, const char *nomeGra
         fprintf(stderr, "Erro ao abrir o arquivo.\n");
         return;
     }
-
-    // Escrever os dados no arquivo
     for (unsigned i = 0; i < tamanho; i++) {
-        fprintf(arquivo, "%u %lf\n", i + 1, valores[i]);
+        fprintf(arquivo, "%lf %lf\n", valoresY[i], valoresX[i]);
     }
 
-    // Fechar o arquivo
     fclose(arquivo);
 
     sleep(1);
 
-    // Criar o gráfico de pontos usando gnuplot
     FILE *gnuplotPipe = fopen("gnuplot_commands", "w");
     if (gnuplotPipe == NULL) {
         fprintf(stderr, "Erro ao abrir o arquivo de comandos do gnuplot.\n");
@@ -52,7 +48,6 @@ int main() {
     char eixoX[64];
     char eixoY[64];
     unsigned size;
-    double *dados;
 
     fgets(nome, 64, stdin);
     nome[strcspn(nome, "\n")] = '\0'; 
@@ -65,18 +60,13 @@ int main() {
 
     scanf("%u", &size);
 
-    dados = (double *) malloc(size * sizeof(double));
-    if (dados == NULL) {
-        fprintf(stderr, "Erro ao alocar memória.\n");
-        return 1;
-    }
+    double valoresX[size], valoresY[size];
 
     for (unsigned i = 0; i < size; i++) {
-        scanf("%lf", &dados[i]);
+        scanf("%lf %lf", &valoresX[i], &valoresY[i]);
     }
 
-    criarGraficoDePontos(dados, size, nome, eixoX, eixoY);
+    criarGraficoDePontos(valoresX, valoresY, size, nome, eixoX, eixoY);
 
-    free(dados);
     return 0;
 }

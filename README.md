@@ -1,6 +1,6 @@
-# Gráfico de Pontos com Linha Curva Tracejada em C
+# Gráfico com Linha Curva Tracejada em C
 
-Este projeto em C gera um gráfico de pontos a partir de um conjunto de dados fornecido pelo usuário. Os pontos são plotados em azul e uma linha curva tracejada é desenhada sobre eles em vermelho. O gnuplot é utilizado para a criação do gráfico.
+Este projeto em C gera um gráfico a partir de um conjunto de dados fornecido pelo usuário. Uma linha curva tracejada é desenhada sobre as cordenadas em azul. O gnuplot é utilizado para a criação do gráfico.
 
 ## Requisitos
 
@@ -19,7 +19,7 @@ Este projeto em C gera um gráfico de pontos a partir de um conjunto de dados fo
 2. Compile o código:
 
     ```sh
-    gcc -o grafico main.c
+    gcc -o grafico grafico.c
     ```
 
 3. Execute o programa:
@@ -47,9 +47,9 @@ Número de Mortes
 Digite o tamanho dos dados:
 5
 
-Digite os dados:
-100
-150
-130
-180
-160
+Digite os dados (x e y consecutivamente):
+1 3 
+2 5
+3 7
+4 9
+5 11
