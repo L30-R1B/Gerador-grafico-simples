@@ -3,7 +3,7 @@
 #include <unistd.h>
 #include <string.h>
 
-void criarGraficoDePontos(unsigned *valores, unsigned tamanho, const char *nomeGrafico, const char *nomeEixoX, const char *nomeEixoY) {
+void criarGraficoDePontos(double *valores, unsigned tamanho, const char *nomeGrafico, const char *nomeEixoX, const char *nomeEixoY) {
     if (valores == NULL) {
         printf("\n--- Dados nulos obtidos ---\n");
         return;
@@ -17,7 +17,7 @@ void criarGraficoDePontos(unsigned *valores, unsigned tamanho, const char *nomeG
 
     // Escrever os dados no arquivo
     for (unsigned i = 0; i < tamanho; i++) {
-        fprintf(arquivo, "%u %u\n", i + 1, valores[i]);
+        fprintf(arquivo, "%u %lf\n", i + 1, valores[i]);
     }
 
     // Fechar o arquivo
@@ -52,7 +52,7 @@ int main() {
     char eixoX[64];
     char eixoY[64];
     unsigned size;
-    unsigned *dados;
+    double *dados;
 
     fgets(nome, 64, stdin);
     nome[strcspn(nome, "\n")] = '\0'; 
@@ -65,14 +65,14 @@ int main() {
 
     scanf("%u", &size);
 
-    dados = (unsigned *) malloc(size * sizeof(unsigned));
+    dados = (double *) malloc(size * sizeof(double));
     if (dados == NULL) {
         fprintf(stderr, "Erro ao alocar memória.\n");
         return 1;
     }
 
     for (unsigned i = 0; i < size; i++) {
-        scanf("%u", &dados[i]);
+        scanf("%lf", &dados[i]);
     }
 
     criarGraficoDePontos(dados, size, nome, eixoX, eixoY);
