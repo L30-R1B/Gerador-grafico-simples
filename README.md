@@ -19,7 +19,7 @@ Este projeto em C gera um gráfico de pontos a partir de um conjunto de dados fo
 2. Compile o código:
 
     ```sh
-    gcc -o grafico grafico.c
+    gcc -o grafico main.c
     ```
 
 3. Execute o programa:
