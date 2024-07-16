@@ -12,7 +12,7 @@ Este projeto em C gera um gráfico de pontos a partir de um conjunto de dados fo
 1. Clone o repositório:
 
     ```sh
-    git clone https://github.com/seu-usuario/seu-repositorio.git
+    git clone https://github.com/L30-R1B/Gerador-grafico-simples.git
     cd seu-repositorio
     ```
 
